@@ -1,0 +1,43 @@
+.display {
+    border-radius: 15px 15px 0px 0px;
+    width: 300px;
+    height: 75px;
+    margin-left: 15px;
+    padding: 15px 15px;
+    text-align: right;
+    color: white;
+    background-color: #222222;
+}
+
+.keys {
+    display: grid;
+    grid-template-columns: repeat( 4, 1fr );
+}
+
+.equal-sign {
+    display: grid;
+    background-color: #FF6A32;
+    border-color: #FF6A32;
+    height: 300px;
+    grid-column: -2;
+    grid-row: 2 / span 5;
+}
+
+button {
+    background-color: white;
+    color: black;
+    width: 75px;
+    height: 75px;
+}
+
+html {
+    font-family: Helvetica;
+    font-size: 200%;
+}
+
+body {
+    padding: 250px;
+    display: flex;
+    justify-content: center;
+    background-color: #0F4C81;
+}
