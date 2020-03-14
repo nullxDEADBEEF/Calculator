@@ -1,7 +1,7 @@
 var firstOperand;
 var secondOperand;
 var operation;
-var firstOperandSet;
+var operationSet;
 
 $( document ).ready( function() {
     $( ".key_value" ).click( getValue );
@@ -15,30 +15,31 @@ $( document ).ready( function() {
 
 function getOperation() {
     operation = $( this ).text();
+    operationSet = true;
     $( "#display" ).text( $( this ).text() );
 }
 
 function getValue() {
-    if ( firstOperandSet ) {
-        secondOperand = $( this ).text(); 
+    if ( operationSet ) {
+        secondOperand += $( this ).text(); 
+        $( "#display" ).text( secondOperand );
     } else {
-        firstOperand = $( this ).text();
-        firstOperandSet = true;
+        firstOperand += $( this ).text();
+        $( "#display" ).text( firstOperand );
     }
-    $( "#display" ).text( $( this ).text() );
 }
 
 function clearDisplay() {
     $( "#display" ).text( 0 );
     firstOperand = 0;
     secondOperand = 0;
-    firstOperandSet = false;
+    operationSet = false;
 }
 
 function performOperation() {
     var result;
-    firstOperand = parseInt( firstOperand );
-    secondOperand = parseInt( secondOperand );
+    firstOperand = parseFloat( firstOperand );
+    secondOperand = parseFloat( secondOperand );
 
     switch ( operation ) {
         case "+":
@@ -54,12 +55,12 @@ function performOperation() {
             result = firstOperand / secondOperand;
             break;
         default:
-            result = 0;
             break;
     }
 
-    $( "#display" ).text( result );
+    // limit result to display 3 decimals
+    $( "#display" ).text( result.toFixed( 3 ) );
     firstOperand = 0;
     secondOperand = 0;
-    firstOperandSet = false;
+    operationSet = false;
 }
