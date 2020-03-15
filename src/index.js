@@ -22,10 +22,12 @@ function getOperation() {
 function getValue() {
     if ( operationSet ) {
         secondOperand += $( this ).text(); 
-        $( "#display" ).text( secondOperand );
+        // NOTE: + infront of secondOperand means remove the leading 0
+        $( "#display" ).text( +secondOperand );
     } else {
         firstOperand += $( this ).text();
-        $( "#display" ).text( firstOperand );
+        // NOTE: see above note
+        $( "#display" ).text( +firstOperand );
     }
 }
 
